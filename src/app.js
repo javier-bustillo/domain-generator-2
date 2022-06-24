@@ -3,47 +3,38 @@ import "bootstrap";
 import "./style.css";
 
 window.onload = () => {
+  generateDomain();
   /*document.querySelector("#btn").addEventListener("click", () => {
     document.querySelector("#excuse-line").innerHTML = generateDomain();
   });
 };*/
-  let i = 1;
+  /*
   do {
-    document.querySelectorAll(`#${i}`).innerHTML = generateDomain();
+    document.querySelector(text).innerHTML = generateDomain();
 
     console.log(i);
     i++;
-  } while (i < 2);
+  } while (i < 3);
+  */
 };
+
 let generateDomain = () => {
-  let pronoun = [
-    "my",
-    "your",
-    "his",
-    "her",
-    "its",
-    "our",
-    "their",
-    "mammas",
-    "daddys"
-  ];
-  let adjective = ["new", "oldie", "crushed", "broken", "huge", "tiny"];
-  let noun = [
-    "wallet",
-    "keys",
-    "horse",
-    "pepper-sproud",
-    "chicken",
-    "rooster",
-    "nose",
-    "boys",
-    "girls"
-  ];
-  let pronounIndex = Math.floor(Math.random() * pronoun.length);
-  let adjIndex = Math.floor(Math.random() * adjective.length);
-  let nounIndex = Math.floor(Math.random() * noun.length);
-  let domainName =
-    pronoun[pronounIndex] + adjective[adjIndex] + noun[nounIndex] + ".com";
+  let pronoun = ["my", "your", "his", "her"];
+  let adjective = ["new", "oldie", "crushed", "broken"];
+  let noun = ["wallet", "keys", "horse", "pepper-sproud"];
+  let domainName;
+
+  for (let i = 0; i < pronoun.length; i++) {
+    for (let j = 0; j < adjective.length; j++) {
+      for (let z = 0; z < noun.length; z++) {
+        domainName = pronoun[i] + adjective[j] + noun[z] + ".com";
+        document.querySelector(
+          "#domainName"
+        ).innerHTML += `<li  class="list-group-item">${domainName} </li>`;
+        console.log(domainName);
+      }
+    }
+  }
 
   return domainName;
 };
